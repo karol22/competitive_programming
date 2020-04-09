@@ -8,15 +8,16 @@ int main(){ _
     int n;
     cin>>n;
     int ans = 0;
-    char x, last = '.';
-
+    map<int, int> h, g;
     for(int i=0; i<n; i++){
-        cin>>x;
-        if(x == last){
-            ans++;
-        } else last = x;
-
+        int r, s;
+        cin>>r>>s;
+        h[r]++;
+        g[s]++;
     }
-    cout<<ans;
+    for(auto x: h){
+        ans+= x.second * g[x.first];
+    }
+    cout<<ans<<"\n";
     return 0;
 }
